@@ -1,0 +1,54 @@
+﻿<form novalidate [formGroup]="myform" (ngOnSubmit)="onSubmit()">
+  <fieldset formGroupName="name">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" formControlName="firstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName" class="form-control" />
+    </div>
+  </fieldset>
+
+  <div class="form-group" [ngClass]="{
+       'has-danger': email.invalid && email.dirty,
+       'has-success': email.valid && email.dirty
+       }">
+    <label>Email</label>
+    <input type="text" formControlName="email" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" formControlName="password" class="form-control"/>
+    <div class="form-control-feedback" *ngIf="password.error && (password.touched || password.dirty)">
+      <div *ngIf="password.errors.required"> Password is required</div>
+      <div *ngIf="password.errors.minlength"> Password must be 8 characters long</div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <label>Language</label>
+    <select class="form-control" formControlName="language">
+      <option value="">Please select a languange</option>
+      <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-outline-primary">Submit</button>
+
+
+
+  <pre>{{myform.value | json}}</pre>
+  
+</form>
+
+<pre>Dirty? Email {{myform.controls.email.dirty}}</pre>
+<pre>Pristine? Email {{myform.controls.email.pristine}}</pre>
+<pre>Touched? Email {{myform.controls.email.touched}}</pre>
+<pre>Valid? Email {{my.form.controls.email.valid}}</pre>
+<pre>Invalid? Email {{my.form.controls.email.invalid}}</pre>
+
