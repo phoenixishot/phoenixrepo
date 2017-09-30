@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -7,10 +7,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrls: ['./slider-holder.component.css'],
     animations: [trigger('slideInOut', [
         state('in', style({
-            transform: 'translateX(90%)'
+            transform: 'translateX(0%)'
         })),
         state('out', style({
-            transform: 'translateX(0%)'
+            transform: 'translateX(-10%)'
         })),
         transition('in => out', animate('300ms ease-in')),
         transition('out => in', animate('100ms ease-in'))
